@@ -1,0 +1,6 @@
+node_modules/
+.idea/*
+src/environment.ts
+./src/environment.ts
+./dist
+dist/
