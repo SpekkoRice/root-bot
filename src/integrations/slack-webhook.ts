@@ -16,10 +16,14 @@ export class SlackWebhook implements MessageEvents {
   }
 
   public async send(message:string, url?:string) {
-    let webhookURL = this.URL;
-    if(url) webhookURL = url;
-    let data = SlackWebhook.createForm(message);
-    return await request.post(webhookURL, {form: data});
+    return new Promise((resolve, reject) => {
+      let webhookURL = this.URL;
+      if(url) webhookURL = url;
+      let data = SlackWebhook.createForm(message);
+      request.post(webhookURL, {form: data}, (error, res, body) => {
+        resolve(body);
+      });
+    });
   }
 
   private static createForm(message:string, attachments?:[Attachment] | Attachment):string {

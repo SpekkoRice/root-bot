@@ -1,4 +1,4 @@
-export class SlackPayloadEvent {
+class Event {
   type:string;
   bot_id?:string;
   user:string;
@@ -8,11 +8,11 @@ export class SlackPayloadEvent {
   event_ts:string;
 }
 
-export class SlackMentionPayload {
+export class SlackEventPayload {
   token:string;
   team_id:string;
   api_app_id:string;
-  event: SlackPayloadEvent;
+  event: Event;
   type:string;
   event_id:string;
   event_time:number;

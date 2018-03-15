@@ -6,18 +6,18 @@ import * as convert from "koa-convert";
 import * as mount from "koa-mount";
 import * as http from "http";
 
-const port = environment.WEBSERVER_PORT;
+const envPORT = environment.WEBSERVER_PORT;
 
 export let app: Koa;
 export let listeningApp: http.Server;
 
-export let start = async ():Promise<boolean> => {
-  let usePort = this.PORT;
+// Returns the port it's listening on
+export let start = async (port?:number):Promise<number> => {
+  let usePort = envPORT;
   if(port) usePort = port;
   app = new Koa();
   app.use(convert(body({fields: "body"})));
   app.use(mount(router.routes()));
   listeningApp = await this.app.listen(usePort);
-  console.log(`APP LISTENING ON: ${usePort}`);
-  return true;
+  return usePort;
 };

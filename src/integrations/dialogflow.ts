@@ -11,8 +11,8 @@ export class DialogFlow {
     this.app = APIAI(dialogflowToken);
   }
 
-  public async onRequest(textRequest:string, uniqueId:string) {
-    let request = this.app.textRequest(textRequest, {sessionId: uniqueId});
+  public async onRequest(textRequest:string, sessionId:string) {
+    let request = this.app.textRequest(textRequest, {sessionId: sessionId});
     return new Promise((resolve, reject) => {
       request.on("response", (res:DialogflowPayload) => {
         resolve(res);
