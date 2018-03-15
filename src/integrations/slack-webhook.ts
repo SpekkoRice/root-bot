@@ -1,43 +1,25 @@
 import * as request from "request";
-import * as Koa from "koa";
-import * as http from "http";
 import { MessageEvents } from "../interfaces/message-events";
 import { Attachment, SlackMessage } from "../models/slack-message";
 
 export class SlackWebhook implements MessageEvents {
 
   private URL:string;
-  private PORT:number;
-
-  public app: Koa;
-  public listeningApp: http.Server;
   public message:any;
 
-  constructor(url:string, port?:number) {
+  constructor(url:string) {
     this.URL = url;
-    if(port) this.PORT = port;
   }
-
-  public async startWebserver (port?:number):Promise<boolean> {
-    try {
-      let usePort = this.PORT;
-      if(port) usePort = port;
-      this.app = new Koa();
-      this.app.use(async (ctx:any) => {ctx.body = 'Hello World';});
-      this.listeningApp = await this.app.listen(usePort);
-      return true;
-    } catch (e) {
-      return false;
-    }
-  };
 
   public async receive(message:string):Promise<string> {
     return message;
   }
 
-  public async send(message:string) {
+  public async send(message:string, url?:string) {
+    let webhookURL = this.URL;
+    if(url) webhookURL = url;
     let data = SlackWebhook.createForm(message);
-    return await request.post(this.URL, {form: data});
+    return await request.post(webhookURL, {form: data});
   }
 
   private static createForm(message:string, attachments?:[Attachment] | Attachment):string {
