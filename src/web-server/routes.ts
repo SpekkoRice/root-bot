@@ -6,12 +6,10 @@ export let router = new Router();
 router.get("/", async (ctx:any, next:any) => { ctx.body = "HELLO WORLD!" });
 
 router.post("/bottie", async (ctx:any, next:any) => {
-  console.log(ctx.request.body);
   incomingMessage.next();
 });
 
 router.post('/slash-bottie', async (ctx:any, next:any) => {
-  console.log(ctx.request.body);
   let webhook = ctx.request.body.response_url;
   slashCommand.next(webhook);
   ctx.status = 200;
