@@ -11,3 +11,8 @@
  - Setup your Slack Bot
  - Add your Webhook
  - Define your challenge / action URL (The URL that will receive POST requests from Slack)
+
+ ## Extra info
+
+ - Make sure you created the file src/environment.ts with your environmental variables
+ - Ngrok can help debug locally https://dashboard.ngrok.com/get-started
