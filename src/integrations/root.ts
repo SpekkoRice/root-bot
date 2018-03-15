@@ -1,8 +1,4 @@
 import * as request from "request";
-import {environment} from "../environment";
-
-const URL = environment.ROOT_API_URL;
-const UNAME = environment.ROOT_API_KEY;
 
 export class Root {
 
