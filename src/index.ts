@@ -9,7 +9,7 @@ import { Root } from "./integrations/root";
 const whURL = environment.INCOMING_WEBHOOK_URL;
 const RootURL = environment.ROOT_API_URL;
 const RootToken = environment.ROOT_API_KEY;
-let step = 0;
+//let step = 0;
 let response = [];
 // Start up the slack webhook to send data to slack
 export let bottie = new SlackWebhook(whURL);
@@ -25,40 +25,42 @@ incomingMessage.subscribe((payload: SlackMentionPayload) => {
   console.log("payload inside incomingMessage", payload);
   if (!response[payload.event.user]) {
     response[payload.event.user] = [];
+    response[payload.event.user]["step"] = 0;
   }
-  step++;
-  response[payload.event.user][step - 1] = payload.event.text.replace(
-    "<@U9Q73AKKM>",
+  response[payload.event.user]["step"] ++;
+  //step++;
+  response[payload.event.user][response[payload.event.user]["step"] - 1] = payload.event.text.replace(
+    "<@U9Q73AKKM> ",
     ""
   );
-  console.log("step", step);
+  console.log("response[payload.event.user][step]", response[payload.event.user]["step"]);
   console.log("response", response);
 
-  switch (step) {
+  switch (response[payload.event.user]["step"]) {
     case 1:
       bottie.send("Hi there, what is your name? ");
       break;
 
     case 2:
       bottie.send(
-        "Hi" + response[payload.event.user][step - 1] + " what is your number? "
+        "Hi @" + response[payload.event.user][response[payload.event.user]["step"] - 1] + " what is your number? "
       );
       break;
 
     case 3:
       bottie.send(
-        response[payload.event.user][step - 1] + " ? What type of phone is it?"
+        "To @" + response[payload.event.user][1] + " : " + response[payload.event.user][response[payload.event.user]["step"] - 1] + " ? What type of phone is it?"
       );
       break;
 
     case 4:
-      if (response[payload.event.user][step - 1] == " Nokia") {
+      if (response[payload.event.user][response[payload.event.user]["step"] - 1] == " Nokia") {
         bottie.send(
-          response[payload.event.user][step - 1] + "? Lol, Do they still make those?"
+          "To @" + response[payload.event.user][1] + " : " + response[payload.event.user][response[payload.event.user]["step"] - 1] + "? Lol, Do they still make those?"
         );
       } else {
         bottie.send(
-          response[payload.event.user][step - 1] + " that is a cool phone"
+          "To @" +  response[payload.event.user][1] + " : " + response[payload.event.user][response[payload.event.user]["step"] - 1] + " that is a cool phone"
         );
       }
       break;
@@ -67,8 +69,8 @@ incomingMessage.subscribe((payload: SlackMentionPayload) => {
       bottie.send("Hi there");
       break;
   }
-  if (step > 3) {
-    step = 0;
+  if (response[payload.event.user]["step"] > 3) {
+    response[payload.event.user]["step"] = 0;
   }
   //bottie.send('Hi there, what do you need?')
 });
