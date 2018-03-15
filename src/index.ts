@@ -20,7 +20,8 @@ slashCommand.subscribe((payload:SlackSlashPayload) => {
 
 // Example of event fired when app is mentioned
 incomingMessage.subscribe((payload:SlackMentionPayload) => {
-  bottie.send('Yes what do you need?')
+  // Just make sure that it it's not coming from a bot
+  bottie.send('Yes what do you need?');
 });
 
 let root = new Root(RootURL, RootToken);

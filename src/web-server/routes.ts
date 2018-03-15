@@ -14,8 +14,8 @@ router.post("/bottie", async (ctx:any, next:any) => {
   let inArray = _.findIndex(tokens, (i) => {
     return i == token;
   });
-
-  if(inArray == -1) {
+  // We don't wan to fire events when bots send messages, only when people send messages
+  if(inArray == -1 && ctx.body.event.hasOwnProperty('bot_id')) {
     incomingMessage.next(ctx.request.body);
     tokens.push(token);
   }
