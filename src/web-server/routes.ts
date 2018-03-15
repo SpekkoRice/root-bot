@@ -11,14 +11,16 @@ let tokens = [];
 
 router.post("/bottie", async (ctx:any, next:any) => {
   let token = ctx.request.body.token;
+  console.log("token",token);
   let inArray = _.findIndex(tokens, (i) => {
     return i == token;
   });
 
-  if(!inArray) {
+  if(inArray == -1) {
     incomingMessage.next(ctx.request.body);
     tokens.push(token);
   }
+
 });
 
 router.post('/slash-bottie', async (ctx:any, next:any) => {
