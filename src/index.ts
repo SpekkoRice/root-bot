@@ -23,25 +23,34 @@ slashCommand.subscribe((payload:SlackSlashPayload) => {
 // Example of event fired when app is mentioned
 incomingMessage.subscribe((payload:SlackMentionPayload) => {
   console.log("payload inside incomingMessage",payload);
-  response.push(payload.event.text.replace('<@U9Q73AKKM>',''));
+  if(!response[payload.event.user])
+  {
+    response[payload.event.user] =[];
+  }
+  step++;
+  response[payload.event.user][step-1]=(payload.event.text.replace('<@U9Q73AKKM>',''));
   console.log("step",step);
   console.log("response",response);
-  step++;
+  
   switch(step){
     case 1:
-    bottie.send('Hi there, what is your name? ' +step )
+    bottie.send('Hi there, what is your name? '  )
     break;
 
     case 2:
-    bottie.send('Hi ' + response[1] + ' what is your number? ' +step + " " )
+    bottie.send('Hi' + response[payload.event.user][step-1] + ' what is your number? '  )
     break;
 
     case 3:
-    bottie.send('What type of phone do you have? ' +step+ " " + response[2])
+    bottie.send('What type of phone do you have? that has the phone number ' + response[payload.event.user][step-1])
+    break;
+
+    case 4:
+    bottie.send(response[payload.event.user][step-1] + " that's a cool phone")
     break;
 
     default:
-    bottie.send('Yes what do you need? ' +step+ " " + response[3])
+    bottie.send('Hi there'  )   
     break;
 
   }  
