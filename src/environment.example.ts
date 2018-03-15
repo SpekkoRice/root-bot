@@ -5,4 +5,5 @@ export let environment = {
   WEBSERVER_URL: "",
   ROOT_API_KEY: "",
   ROOT_API_URL: "",
+  DIALOGFLOW_ACCESS_TOKEN: "",
 };
