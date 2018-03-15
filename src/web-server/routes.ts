@@ -10,7 +10,6 @@ router.get("/", async (ctx:any, next:any) => { ctx.body = "HELLO WORLD!" });
 let tokens = [];
 
 router.post("/bottie", async (ctx:any, next:any) => {
-  let token = ctx.request.body.token;
   let token = ctx.request.body.event_id;
   console.log("token",token);
   let inArray = _.findIndex(tokens, (i) => {
