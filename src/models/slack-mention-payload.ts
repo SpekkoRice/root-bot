@@ -1,5 +1,6 @@
 export class SlackPayloadEvent {
   type:string;
+  bot_id?:string;
   user:string;
   text:string;
   ts:string;
