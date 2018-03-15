@@ -10,6 +10,7 @@ import {DialogFlow} from "./integrations/dialogflow";
 const whURL = environment.INCOMING_WEBHOOK_URL;
 const RootURL = environment.ROOT_API_URL;
 const RootToken = environment.ROOT_API_KEY;
+const dialogFlowToken = environment.DIALOGFLOW_ACCESS_TOKEN;
 
 // EXAMPLES
 
@@ -31,18 +32,18 @@ incomingMessage.subscribe((payload:SlackMentionPayload) => {
 let root = new Root(RootURL, RootToken);
 
 root.post("v1/insurance/quotes", {type: "root_gadgets", model_name: "iPhone 5"}).then((res) => {
-  console.log(res);
+  // console.log(res);
 });
 
 root.get('v1/insurance/modules/root_gadgets/models').then((res) => {
-  console.log(res);
+  // console.log(res);
 });
 
 // Startup the DialogFlow integration
-let dialogFlow = new DialogFlow(environment.DIALOGFLOW_ACCESS_TOKEN);
-
-dialogFlow.onRequest('Hello World').then((response) => {
-  // List our shit here
+let dialogFlow = new DialogFlow(dialogFlowToken);
+// Unique ID would typically be USER ID or something
+dialogFlow.onRequest('Hello', 'UniqueID').then((res) => {
+  console.log(res);
 });
 
 // Start up the web server to receive requests from slack
