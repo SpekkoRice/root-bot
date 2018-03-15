@@ -11,7 +11,7 @@ export class SlackMentionPayload {
   token:string;
   team_id:string;
   api_app_id:string;
-  event: [SlackPayloadEvent];
+  event: SlackPayloadEvent;
   type:string;
   event_id:string;
   event_time:number;
