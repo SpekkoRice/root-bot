@@ -5,10 +5,13 @@ import {start} from "./web-server/http-server";
 import {SlackMentionPayload} from "./models/slack-mention-payload";
 import {SlackSlashPayload} from "./models/slack-slash-payload";
 import {Root} from "./integrations/root";
+import {DialogFlow} from "./integrations/dialogflow";
 
 const whURL = environment.INCOMING_WEBHOOK_URL;
 const RootURL = environment.ROOT_API_URL;
 const RootToken = environment.ROOT_API_KEY;
+
+// EXAMPLES
 
 // Start up the slack webhook to send data to slack
 export let bottie = new SlackWebhook(whURL);
@@ -24,15 +27,22 @@ incomingMessage.subscribe((payload:SlackMentionPayload) => {
   bottie.send('Yes what do you need?');
 });
 
+// Startup the ROOT API integration
 let root = new Root(RootURL, RootToken);
 
-// EXAMPLES
 root.post("v1/insurance/quotes", {type: "root_gadgets", model_name: "iPhone 5"}).then((res) => {
   console.log(res);
 });
 
 root.get('v1/insurance/modules/root_gadgets/models').then((res) => {
   console.log(res);
+});
+
+// Startup the DialogFlow integration
+let dialogFlow = new DialogFlow(environment.DIALOGFLOW_ACCESS_TOKEN);
+
+dialogFlow.onRequest('Hello World').then((response) => {
+  // List our shit here
 });
 
 // Start up the web server to receive requests from slack

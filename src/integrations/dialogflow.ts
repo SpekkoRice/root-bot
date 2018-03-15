@@ -1,8 +1,14 @@
 import {ApiAiClient} from "api-ai-javascript";
-import { environment } from '../environment';
 
-const client = new ApiAiClient({accessToken: environment.DIALOGFLOW_ACCESS_TOKEN})
+export class DialogFlow {
 
-    .textRequest('Hello!')
-    .then((response) => {/* do something */})
-    .catch((error) => {/* do something here too */})
+  private dialogflowToken:string;
+
+  constructor(dialogflowToken:string) {
+    this.dialogflowToken = dialogflowToken;
+  }
+
+  public async onRequest(textRequest:string) {
+    return new ApiAiClient({accessToken: this.dialogflowToken}).textRequest(textRequest);
+  }
+}
