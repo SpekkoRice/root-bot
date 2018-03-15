@@ -6,6 +6,7 @@ import {SlackMentionPayload} from "./models/slack-mention-payload";
 import {SlackSlashPayload} from "./models/slack-slash-payload";
 import {Root} from "./integrations/root";
 import {DialogFlow} from "./integrations/dialogflow";
+import {DialogflowPayload} from "./models/dialogflow-payload";
 
 const whURL = environment.INCOMING_WEBHOOK_URL;
 const RootURL = environment.ROOT_API_URL;
@@ -42,7 +43,7 @@ root.get('v1/insurance/modules/root_gadgets/models').then((res) => {
 // Startup the DialogFlow integration
 let dialogFlow = new DialogFlow(dialogFlowToken);
 // Unique ID would typically be USER ID or something
-dialogFlow.onRequest('Hello', 'UniqueID').then((res) => {
+dialogFlow.onRequest('Hello', 'UniqueID').then((res:DialogflowPayload) => {
   console.log(res);
 });
 
