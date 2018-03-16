@@ -1,9 +1,10 @@
 import { Subject } from 'rxjs/Subject';
 import { SlackEventPayload } from "../models/slack-event-payload";
+import { SlackSlashPayload } from "../models/slack-slash-payload";
 
 export class SlackService {
   public static app_mention = new Subject<SlackEventPayload>();
-  public static slash_command = new Subject<SlackEventPayload>();
+  public static slash_command = new Subject<SlackSlashPayload>();
   public static channel_created = new Subject<SlackEventPayload>();
   public static channel_delete = new Subject<SlackEventPayload>();
   public static channel_rename = new Subject<SlackEventPayload>();
@@ -63,7 +64,6 @@ export class SlackService {
   public static handle(type:string):Subject<SlackEventPayload> {
     if(type == "app_mention") return SlackService.app_mention;
     if(type == "message.im") return SlackService.message_im;
-    if(type == "slash_command") return SlackService.slash_command;
     if(type == "channel_created") return SlackService.channel_created;
     if(type == "channel_delete") return SlackService.channel_delete;
     if(type == "channel_rename") return SlackService.channel_rename;

@@ -2,8 +2,8 @@ import {start as httpStart} from "./web-server/http-server";
 
 /*
  *  This is the entry point for the application
- *    you should bootstrap all your code from here
- *    for convenience the HTTP Server has been started.
+ *    you can add all your application logic here
+ *    or reference from here.. but this is the entry point.
  */
 
 httpStart().then((port) => {
