@@ -1,4 +1,10 @@
 # Slack Root Bot
+An event driven integration framework for designing your own chat bot to integrate with DialogFlow, Slack & Root.co.za API.
+Initially I made this to remove as much boilerplate and setup as possible so I could just focus on writing nice application logic.
+I decided to clean and refactor this repo in hopes that someone else might find it usefull.
+
+Happy coding!
+
 ## Dependencies:
  - NodeJS => 8.9.3
 ## Quickstart
@@ -69,10 +75,10 @@ Please note that you should be querying: `https://sandbox.root.co.za` and not `h
 | Slack Workspace Events    |   NOT SO SOON |
 | Slack RTM API Integration |   NOT SO SOON |
 
-# ISSUE SUBMITIONS
+# Issue Submission
 Please submit an issue if you've found something wrong / broken or you're getting some weird ass errors.
 
-# CONTRIBUTIONS
+# Contributions
 It's simple:
  - Fork the repo
  - Make your changes
