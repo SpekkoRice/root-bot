@@ -11,16 +11,24 @@ Happy coding!
 Download `ngrok` and `unzip` it
 ```
 LINUX:
-wget https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip; unzip ./ngrok-stable-linux-amd64.zip -d ./
+wget https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip;
+unzip ./ngrok-stable-linux-amd64.zip -d ./;
+```
+```
 MACOS:
-wget https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-darwin-amd64.zip; unzip ./ngrok-stable-darwin-amd64.zip -d ./
+wget https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-darwin-amd64.zip;
+unzip ./ngrok-stable-darwin-amd64.zip -d ./;
 ```
 or if you don't have `wget`
 ```
 LINUX:
-curl https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip; unzip ./ngrok-stable-linux-amd64.zip -d ./
+curl https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip;
+unzip ./ngrok-stable-linux-amd64.zip -d ./
+```
+```
 MACOS:
-curl https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-darwin-amd64.zip; unzip ./ngrok-stable-darwin-amd64.zip -d ./
+curl https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-darwin-amd64.zip;
+unzip ./ngrok-stable-darwin-amd64.zip -d ./
 ```
 Register for ngrok if you haven't already: https://dashboard.ngrok.com/user/signup
 They will prompt you to run 2 commands
