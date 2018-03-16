@@ -43,7 +43,7 @@ to get the project up and running
 ### For Slack BOT Integration
 You need to create a slack application @ https://api.slack.com
 #### Currently Supported Slack Features
-|      FEATURE      | Supported |
+|      FEATURE      | SUPPORTED |
 |-------------------|-----------|
 | Incoming Webhooks |   YES     |
 | Slash Commands    |   YES     |
