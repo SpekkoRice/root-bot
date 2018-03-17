@@ -4,11 +4,11 @@
  *    and setup your organisation and added your API Keys ect.
  */
 
-import {environment} from "../environment";
+import {Environment} from "../environment";
 import {Root} from "../integrations/root";
 
-const url = environment.ROOT_API_URL;
-const token = environment.ROOT_API_KEY;
+const url = Environment.Root.API_URL;
+const token = Environment.Root.API_KEY;
 
 /*
  * Basically all this Root Class actually does is

@@ -5,11 +5,11 @@
  *    as your intents and contexts
  */
 
-import {environment} from "../environment";
+import {Environment} from "../environment";
 import {DialogFlow} from "../integrations/dialogflow";
 import {DialogflowPayload} from "../models/dialogflow-payload";
 
-const dialogFlowToken = environment.DIALOGFLOW_ACCESS_TOKEN;
+const dialogFlowToken = Environment.DialogFlow.ACCESS_TOKEN;
 
 /*
  * Fire up the DialogFlow integration class

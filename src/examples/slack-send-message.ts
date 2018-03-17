@@ -5,7 +5,7 @@
  */
 
 import {SlackWebhook} from "../integrations/slack-webhook";
-import {environment} from "../environment";
+import {Environment} from "../environment";
 
 /*
  * For convenience I've added a single Incoming Webhook URL in the environment.ts
@@ -16,7 +16,7 @@ import {environment} from "../environment";
 /*
  * Instantiate your SlackWebhook instance using the SlackWebhook Wrapper class.
  */
-export let bottie = new SlackWebhook(environment.INCOMING_WEBHOOK_URL);
+export let bottie = new SlackWebhook(Environment.Slack.INCOMING_WEBHOOK_URL);
 
 /*
  * Now send the message

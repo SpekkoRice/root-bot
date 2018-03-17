@@ -1,4 +1,4 @@
-import {environment} from "../environment";
+import {Environment} from "../environment";
 import {koaBetterBody as body} from "../custom-typings/koa-better-body";
 import {router} from "./routes";
 import * as Koa from "koa";
@@ -6,7 +6,7 @@ import * as convert from "koa-convert";
 import * as mount from "koa-mount";
 import * as http from "http";
 
-const envPORT = environment.WEBSERVER_PORT;
+const envPORT = Environment.WebServer.PORT;
 
 export let app: Koa;
 export let listeningApp: http.Server;
