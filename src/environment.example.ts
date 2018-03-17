@@ -1,6 +1,6 @@
 export class Environment {
   public telegram = {
-    API_URL: "",
+    API_URL: "https://api.telegram.org",
     API_KEY: ""
   };
 
