@@ -9,9 +9,9 @@ import {start as httpStart} from "../web-server/http-server";
 import {IEventPayload} from "../models/slack";
 
 /*
- * You subscribe to the slash command event on the slack service.
+ * You subscribe to the app_mention event on the slack service.
  * This service will fire every time next() is run on the subject.
- * In routes there's already a URL defined for /slack-event-listener that will next the slack
+ * In routes there's already a URL defined for /slack/event that will next the slack
  *    payload into the subscription
  */
 SlackService.app_mention.subscribe((payload:IEventPayload) => {
@@ -24,7 +24,7 @@ SlackService.app_mention.subscribe((payload:IEventPayload) => {
   console.log('SLASH COMMAND RECEIVED!');
 });
 
-// We assume you've setup your Slash Commands on your Slack App
+// We assume you've setup your Events on your Slack App
 // So all you need to do is startup your http server
 
 httpStart().then((port:number) => {
