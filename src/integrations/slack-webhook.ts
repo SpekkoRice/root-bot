@@ -1,18 +1,13 @@
 import * as request from "request";
-import { MessageEvents } from "../interfaces/message-events";
-import { Attachment, SlackMessage } from "../models/slack-message";
+import {IAttachment, SlackMessage} from "../models/slack";
 
-export class SlackWebhook implements MessageEvents {
+export class SlackWebhook {
 
   private URL:string;
   public message:any;
 
   constructor(url:string) {
     this.URL = url;
-  }
-
-  public async receive(message:string):Promise<string> {
-    return message;
   }
 
   public async send(message:string, url?:string) {
@@ -26,13 +21,10 @@ export class SlackWebhook implements MessageEvents {
     });
   }
 
-  private static createForm(message:string, attachments?:[Attachment] | Attachment):string {
+  private static createForm(message:string, attachments?:[IAttachment] | IAttachment):string {
     if(attachments instanceof Array) {
-
       return JSON.stringify(new SlackMessage(message, attachments));
-
-    } else if (attachments instanceof Attachment) {
-
+    } else if (attachments instanceof IAttachment) {
       let slackMessage:SlackMessage = new SlackMessage(message);
       slackMessage.addAttachment(attachments);
       return JSON.stringify(slackMessage);

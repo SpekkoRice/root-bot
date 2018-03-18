@@ -1,23 +1,23 @@
 export class Environment {
-  public telegram = {
-    API_URL: "",
-    API_KEY: ""
+  public static Telegram = {
+    API_URL: "https://api.telegram.org",
+    BOT_API_KEY: ""
   };
 
-  public slack = {
+  public static  Slack = {
     INCOMING_WEBHOOK_URL: "",
   };
 
-  public webServer = {
+  public static  WebServer = {
     WEBSERVER_PORT: 3000,
   };
 
-  public root = {
-    API_URL: "",
-    API_KEY: "https://sandbox.root.co.za"
+  public static  Root = {
+    API_URL: "https://sandbox.root.co.za",
+    API_KEY: ""
   };
 
-  public dialogFlow = {
+  public static  DialogFlow = {
     ACCESS_TOKEN: "",
   };
 }

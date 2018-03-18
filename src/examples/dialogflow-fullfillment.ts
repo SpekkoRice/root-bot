@@ -7,7 +7,7 @@
 
 import {Environment} from "../environment";
 import {DialogFlow} from "../integrations/dialogflow";
-import {DialogflowPayload} from "../models/dialogflow-payload";
+import {IPayload} from "../models/dialogflow";
 
 const dialogFlowToken = Environment.DialogFlow.ACCESS_TOKEN;
 
@@ -26,7 +26,7 @@ let dialogFlow = new DialogFlow(dialogFlowToken);
  *    if it's inconsistent, users will lose their context.
  *    The unique ID is basically a session ID to keep the context the same for a given, well session.
  */
-dialogFlow.onRequest('Hello', 'UniqueID').then((res:DialogflowPayload) => {
+dialogFlow.onRequest('Hello', 'UniqueID').then((res:IPayload) => {
   /*
    * Here Dialogflow will respond with it's fulfillment
    *  From here you would typically send your fulfillment via bot
