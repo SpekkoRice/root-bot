@@ -5,6 +5,20 @@ I decided to clean and refactor this repo in hopes that someone else might find 
 
 Happy coding!
 
+## Currently Supported API's / Features
+|      FEATURE                                     | SUPPORTED              |
+|--------------------------------------------------|------------------------|
+| Slack: Incoming Webhooks                         |    YES                 |
+| Slack: Slash Commands                            |    YES                 |
+| Slack: Bot Events                                |    YES                 |
+| Slack: Workspace Events                          |    NO                  |
+| Slack: RTM API                                   |    NO                  |
+| Telegram: BOT API (via Webhooks)                 |    YES (99% Complete)  |
+| Telegram: BOT API (via Long-Polling)             |    NO                  |
+| Telegram: API (Used to design your own clients)  |    NO                  |
+| Root: REST API (POST, PUT, GET, DELETE)          |    YES                 |
+| DialogFlow: Fullfillment Webook                  |    YES (& Only)        |
+
 ## Dependencies:
  - NodeJS => 8.9.3
 ## Quickstart
@@ -50,20 +64,23 @@ to get the project up and running
 
 ### For Slack BOT Integration
 You need to create a slack application @ https://api.slack.com
-#### Currently Supported Slack Features
-|      FEATURE      | SUPPORTED |
-|-------------------|-----------|
-| Incoming Webhooks |   YES     |
-| Slash Commands    |   YES     |
-| Bot Events        |   YES     |
-| Workspace Events  |   NO      |
-| RTM API           |   NO      |
 
 #### Slack Slash Commands
-When prompted to enter a Request URL for Slash Commands (When adding one) `https://<ngrok>.io/slack-slash-command` route has been defined to handle those events
+When prompted to enter a Request URL for Slash Commands (When adding one) `https://<ngrok>.io/slack/slash` route has been defined to handle those events
 
 #### Slack Events
-When prompted to enter a Request URL for Slack Events `https://<ngrok>.io/slack-event-listener` route has been added to handle ALL Bot Events
+When prompted to enter a Request URL for Slack Events `https://<ngrok>.io/slack/event` route has been added to handle ALL Bot Events
+
+### For Telegram BOT Integration
+You need to create a bot on Telegram by messaging the BotFather and requesting to create a new bot
+If you already have a bot & Bot API Key then you're set to go
+
+#### Adding the Integration
+Just add your BOT API KEY to the Telegram environment BOT_API_KEY
+
+#### Adding your webhook
+For your convenience, there's a method under the SlackBot to add your webhook integration.
+Also a route as been added to handle the updates for you, so for your bot updates you should add the webhook `https://<ngrok>/telegram/updates`
 
 ### For Dialogflow Integration
 You need to register for Dialogflow and enable V2 API
@@ -78,7 +95,6 @@ Please note that you should be querying: `https://sandbox.root.co.za` and not `h
 ## In the Pipeline
 |      FEATURE              |   WHEN        |
 |---------------------------|---------------|
-| Telegram Integration      |   SOON        |
 | CLI Interface for Chat    |   SOON        |
 | Slack Workspace Events    |   NOT SO SOON |
 | Slack RTM API Integration |   NOT SO SOON |

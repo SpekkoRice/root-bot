@@ -1,5 +1,5 @@
 import * as APIAI from "apiai";
-import {DialogflowPayload} from "../models/dialogflow-payload";
+import {IPayload} from "../models/dialogflow";
 
 export class DialogFlow {
 
@@ -11,10 +11,10 @@ export class DialogFlow {
     this.app = APIAI(dialogflowToken);
   }
 
-  public async onRequest(textRequest:string, sessionId:string):Promise<DialogflowPayload> {
+  public async onRequest(textRequest:string, sessionId:string):Promise<IPayload> {
     let request = this.app.textRequest(textRequest, {sessionId: sessionId});
-    return new Promise<DialogflowPayload>((resolve, reject) => {
-      request.on("response", (res:DialogflowPayload) => {
+    return new Promise<IPayload>((resolve, reject) => {
+      request.on("response", (res:IPayload) => {
         resolve(res);
       });
 

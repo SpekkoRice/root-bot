@@ -6,7 +6,7 @@
 
 import {SlackService} from "../services/slack";
 import {start as httpStart} from "../web-server/http-server";
-import {SlackSlashPayload} from "../models/slack-slash-payload";
+import {ISlashPayload} from "../models/slack";
 
 /*
  * You subscribe to the slash command event on the slack service.
@@ -14,7 +14,7 @@ import {SlackSlashPayload} from "../models/slack-slash-payload";
  * In routes there's already a URL defined for /slack-slash-command that will next the slack
  *    payload into the subscription
  */
-SlackService.slash_command.subscribe((payload:SlackSlashPayload) => {
+SlackService.slash_command.subscribe((payload:ISlashPayload) => {
   /*
    * In here you can do what you want with the payload,
    *    typically you would respond here or perhaps send something off to DialogFlow.
