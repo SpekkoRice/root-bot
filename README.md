@@ -1,5 +1,5 @@
 # Slack Root Bot
-An event driven integration framework for designing your own chat bot to integrate with DialogFlow, Slack & Root.co.za API in `TypeScript`.
+An event driven integration framework for designing your own chat bot to integrate with DialogFlow, Slack, Telegram & Root.co.za API in `TypeScript`.
 Initially I made this to remove as much boilerplate and setup as possible so I could just focus on writing nice application logic.
 I decided to clean and refactor this repo in hopes that someone else might find it usefull.
 
