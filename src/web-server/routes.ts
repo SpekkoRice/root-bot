@@ -3,10 +3,19 @@ import {SlackService} from "../services/slack";
 import {IEventPayload, ISlashPayload} from "../models/slack";
 import {TelegramService} from "../services/telegram";
 import {IUpdate} from "../models/telegram";
+import {async} from "rxjs/scheduler/async";
+import {DialogflowService} from "../services/dialogflow";
 
 export let router = new Router();
 
 router.get("/", async (ctx:any, next:any) => { ctx.body = "HELLO WORLD!" });
+
+router.post("/dialogflow/fulfillment", async(ctx:any, next:any) => {
+  DialogflowService.fulfillment.next(ctx.request.body);
+  ctx.status = 200;
+  ctx.body = {"fulfillmentText": "HELLO WORLD"};
+  // https://dialogflow.com/docs/reference/api-v2/rest/v2beta1/WebhookResponse
+});
 
 /*
  * This is a convenience URL for Slack to post to when events that your app listens to fires

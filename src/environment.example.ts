@@ -9,7 +9,7 @@ export class Environment {
   };
 
   public static  WebServer = {
-    WEBSERVER_PORT: 3000,
+    PORT: 3000,
   };
 
   public static  Root = {
